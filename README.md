@@ -2,6 +2,13 @@
 
 過去に用いた用いたスライドを管理すると共に公開する。
 
+## 各スライド
+
+* 第5回関西Lispユーザ会
+  * https://myaosato.github.io/slides/20180414KansaiLisper.html
+* 第6回関西Lispユーザ会
+  * https://myaosato.github.io/slides/20180623KansaiLisper.html
+
 ## 使用ツール
 [reveal.js](https://github.com/hakimel/reveal.js/)
 reveal.jsのライセンスについては、LICENSE-reveal.js.txtに記載
