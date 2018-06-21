@@ -11,7 +11,7 @@
 
 ## 使用ツール
 [reveal.js](https://github.com/hakimel/reveal.js/)
-reveal.jsのライセンスについては、LICENSE-reveal.js.txtに記載
+reveal.jsのライセンスについては、reveal.js.license.txtに記載
 
 ## このスライドのライセンス
 このスライド集から、reveal.jsに寄るところを除いた純粋に私に寄るコンテンツ(特に.mdファイル)は、
