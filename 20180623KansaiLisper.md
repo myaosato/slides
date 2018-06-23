@@ -78,16 +78,38 @@ Satoaki MIYAO
 
 ---
 
-## Feature as Lisp
+## Feature
 
 * Lisp-1
 * Lexical scope
-* 簡単なパッケージシステム
-  * プレフィックスをつける様な簡単なもの
 
 >>>
 
-## Feature as Lisp
+## Feature
+
+* if, cond
+* lambda
+* let
+* progn
+* set!, set-g!, defun!
+
+>>>
+
+## Feature
+
+* multiple-value-list
+
+~~~LISP
+ARRP-USER> (rem 8 5)
+1
+3
+ARRP-USER> (multiple-value-list (rem 8 5))
+(1 3)
+~~~
+
+>>>
+
+## Feature
 
 * Macro
   * quote(')
@@ -95,6 +117,37 @@ Satoaki MIYAO
   * comma(,)
   * comma at(,@)
 * gensym
+
+>>>
+
+## Feature
+
+* simple package system
+  * just provide a way to change namespace
+
+~~~LISP
+ARRP-USER> (current-package)
+"ARRP-USER"
+ARRP-USER> (set-g! hoge 42)
+42
+ARRP-USER> hoge
+42
+ARRP-USER> (change-package! "foo")
+"FOO"
+FOO> (set-g! hoge 41)
+41
+FOO> hoge
+41
+FOO> arrp-user:hoge
+42
+FOO> (change-package! "arrp-user")
+"ARRP-USER"
+ARRP-USER> hoge
+42
+ARRP-USER> foo:hoge
+41
+~~~
+
 
 ---
 
@@ -159,7 +212,7 @@ Satoaki MIYAO
 
 ## Number
 
-~~~
+~~~LISP
 ARRP-USER> 42
 42
 ARRP-USER> 0x2A
@@ -206,7 +259,7 @@ ARRP-USER> (to-precision 42 4)
 
 ## threading macro
 
-~~~
+~~~LISP
 ARRP-USER> (defmacro! -> (prev &rest remained)
 ..........   (if (= (length remained) 0)
 ..........       prev
