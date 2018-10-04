@@ -58,7 +58,7 @@ Satoaki MIYAO
 * ClojureScriptについての何か
 * common lispでlanguage server protocolについて
 
->>> 
+>>>
 
 ### 2017/07/08 第2回
 
