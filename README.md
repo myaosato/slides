@@ -9,6 +9,10 @@
 * 第6回関西Lispユーザ会
   * https://myaosato.github.io/slides/20180623KansaiLisper.html
 
+* 関西Lispユーザ会まとめ?
+  * https://myaosato.github.io/slides/20181006IntroductionOfKansaiLisp.html
+
+
 ## 使用ツール
 [reveal.js](https://github.com/hakimel/reveal.js/)
 reveal.jsのライセンスについては、reveal.js.license.txtに記載
