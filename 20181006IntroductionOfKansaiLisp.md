@@ -102,6 +102,7 @@ Satoaki MIYAO
 * Common LisperへのSchemeの紹介
 * Lispでやる記号微分
 * lemで漢字直接入力
+* Arduino用のLisp系言語
 * オレオレLISPその名はARRP
 
 ---
