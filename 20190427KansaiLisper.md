@@ -245,6 +245,81 @@ Miyao Satoaki
 
 ---
 
+## 何故これで再帰になるのか。<br>(簡単に)
+
+- Y(Z)コンビネータは高階関数の不動点を返す
+- 再帰関数は、必ずある高階関数の不動点となる
+    - ある関数は、元の関数で元の関数が呼び出されているところを引数にした高階関数
+- そのある関数をYコンビネータに食わせると、元の再帰関数が返る
+
+>>>
+
+## 例 Common Lispで
+
+```lisp
+(defun z (f)
+  ((lambda (x) (funcall f (lambda (y) (funcall (funcall x x) y))))
+   (lambda (x) (funcall f (lambda (y) (funcall (funcall x x) y))))))
+```
+
+>>>
+
+## 例 Common Lispで
+
+```lisp
+(defun fact (x)
+  (if (= x 1)
+      1
+      (* x (fact (1- x)))))
+
+(defun %fact (f)
+  (lambda (x)
+    (if (= x 1)
+      1
+      (* x (funcall f (1- x))))))
+```
+
+>>>
+
+## 例 Common Lispで
+
+```lisp
+CL-USER> (funcall (%fact #'fact) 5)
+120
+CL-USER> (funcall (z #'%fact) 5)
+120
+```
+
+>>>
+
+## 例 Common Lispで
+
+```lisp
+(defun fib (x)
+  (cond ((= x 0) 0)
+        ((= x 1) 1)
+        (t (+ (fib (- x 1)) (fib (- x 2))))))
+
+(defun %fib (f)
+  (lambda (x)
+    (cond ((= x 0) 0)
+          ((= x 1) 1)
+          (t (+ (funcall f (- x 1)) (funcall f (- x 2)))))))
+```
+
+>>>
+
+## 例 Common Lispで
+
+```lisp
+CL-USER> (funcall (%fib #'fib) 10)
+55
+CL-USER> (funcall (z #'%fib) 10)
+55
+```
+
+---
+
 ## 剰余
 
 ```lisp
