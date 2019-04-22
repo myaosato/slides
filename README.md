@@ -4,13 +4,18 @@
 
 ## 各スライド
 
-* 第5回関西Lispユーザ会
+* 第5回関西Lispユーザ会での発表
   * https://myaosato.github.io/slides/20180414KansaiLisper.html
-* 第6回関西Lispユーザ会
+* 第6回関西Lispユーザ会での発表
   * https://myaosato.github.io/slides/20180623KansaiLisper.html
-
 * 関西Lispユーザ会まとめ?
   * https://myaosato.github.io/slides/20181006IntroductionOfKansaiLisp.html
+* 第8回関西Lispユーザ会での発表
+  * https://myaosato.github.io/slides/20181215KansaiLisper.html
+* 第10回関西Lispユーザ会での発表
+  * https://myaosato.github.io/slides/20190427KansaiLisper.html
+
+
 
 
 ## 使用ツール
