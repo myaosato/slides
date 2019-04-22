@@ -10,8 +10,6 @@
   * https://myaosato.github.io/slides/20180623KansaiLisper.html
 * 関西Lispユーザ会まとめ?
   * https://myaosato.github.io/slides/20181006IntroductionOfKansaiLisp.html
-* 第8回関西Lispユーザ会での発表
-  * https://myaosato.github.io/slides/20181215KansaiLisper.html
 * 第10回関西Lispユーザ会での発表
   * https://myaosato.github.io/slides/20190427KansaiLisper.html
 
