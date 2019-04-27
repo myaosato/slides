@@ -1,4 +1,4 @@
-# FizzBazzを書こう<br>with Common Lisp
+# FizzBuzzを書こう<br>with Common Lisp
 
 
 ## 第10回 関西Lispユーザ会
@@ -72,7 +72,7 @@ CL-USER> (run-fizzbuzz-cl)
 
 ---
 
-# FizzBazzを書こう<br><span style="color:red;">ただしラムダ計算で</span><br>with Common Lisp
+# FizzBuzzを書こう<br><span style="color:red;">ただしラムダ計算で</span><br>with Common Lisp
 
 
 ## 第10回 関西Lispユーザ会
