@@ -1,0 +1,292 @@
+\documentclass[dvipdfmx, 12pt]{beamer}
+\usepackage{graphicx}
+\usepackage{bxdpx-beamer}
+\usepackage{pxjahyper}
+\usepackage{minijs}
+\usepackage{amsmath,amsfonts,amsthm,amssymb,amscd, euler}
+\usepackage[all]{xy}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\def\objectstyle{\displaystyle}
+%-----------------------------------------------------------
+\usetheme{CambridgeUS}
+\usecolortheme{beaver}
+%-----------------------------------------------------------
+\title{重畳関数について with Common Lisp}
+\author{MIYAO Satoaki}
+\institute{}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{目次}
+
+\frame{
+  \frametitle{目次}
+  \begin{itemize}
+    \item 自己紹介
+    \item 重畳関数について
+    \item 数学的な話
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{自己紹介}
+  \begin{itemize}
+    \item Miyao Satoaki
+    \item twitter: @myao\_s\_moking
+    \item github: myaosato
+    \item 最近、数学の方のイベントにも関わりだした
+  \end{itemize}
+}
+
+\section{重畳関数について}
+
+\frame{
+  \frametitle{重畳関数}
+  \begin{itemize}
+    \item reduce お好きですか?
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{reduce (hold)}
+  \begin{itemize}
+    \item 日本語では重畳関数
+    \item reduceとか、holdと呼ばれます
+    \item リスト(配列)の要素を順番に処理をして新しい値に変える関数
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{検索キーワードとして}
+  \begin{itemize}
+    \item 検索すると関数型云々とか引っかかる
+    \item 再帰呼び出しとも関係している
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{reduceとは}
+  \begin{itemize}
+    \item (リストの)reduceの一般化
+    \item 結局、重畳関数ってなによ
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{reduce(リスト版)}
+  \begin{itemize}
+    \item 要素を順番に処理
+    \item オプションや別名の関数で、処理する方向が逆に
+    \item デモ
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{reduce(リスト版)}
+  \begin{itemize}
+    \item リストを作り変えるという操作
+    \item コンストラクタと強い関係がある(holdr)
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{reduce(tree版)}
+  \begin{itemize}
+    \item 同じように木構造にも適用できる
+    \item デモ
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{reduce(自然数版)}
+  \begin{itemize}
+    \item 自然数なんかにも使える
+    \item 自然数とは、0から始まって1, 2, 3と続く数
+    \item デモ
+  \end{itemize}
+}
+
+\section{数学的な話}
+
+\frame{
+  \frametitle{圏論って}
+  \begin{itemize}
+    \item 数学のある分野
+    \item プログラミングとも関連している(らしい)
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{圏}
+  \[
+    \xymatrix{
+        A \ar@(u, l)_{1_A} \ar[dd]_{f} \ar[ddrr]^{g \circ f} \\
+        & \\
+        B \ar@(d, l)^{1_B} \ar[rr]_{g} & & C \ar@(d, r)_{1_C} \\
+    }
+  \]
+  \begin{itemize}
+    \item 矢印が射、 矢印の前後のアルファベットが対象を表す。
+    \item 矢印は、合成が可能
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{関手}
+  \[
+    \xymatrix{
+        A \ar[dd]_{f} & & F(A) \ar[dd]^{F(f)} \\
+        & \\
+        B & & F(B) \\
+    }
+  \]
+  \begin{itemize}
+    \item 対象を対象に、射を射に移す対応
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{F始代数}
+  \[
+    X \simeq F(X)
+  \]
+  \[
+    \xymatrix{
+        X \ar[ddd]_{f(h)} \ar@<-0.7ex>[rrr]_{in^{-1}} & & & F(X) \ar@<-0.7ex>[lll]_{in} \ar[ddd]^{F(f(h))} \\
+        & & & \\
+        & & & \\
+        Y & & & F(Y) \ar[lll]_{h}
+    }
+  \]
+  $f$がfoldに対応している.
+}
+
+\frame{
+  \frametitle{各射について}
+  \[
+    \xymatrix{
+        X \ar@<-0.7ex>[rrr]_{in^{-1}} & & & F(X) \ar@<-0.7ex>[lll]_{in}
+    }
+  \]
+  \begin{itemize}
+    \item $in$ が、コンストラクタ
+    \item $in^{-1}$ がコンストラクタの逆
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{各射について}
+  \[
+    \xymatrix{
+        Y & & & F(Y) \ar[lll]_{h}
+    }
+  \]
+  \begin{itemize}
+    \item $h$ が、foldに渡す関数
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{各射について}
+  \[
+    \xymatrix{
+        F(X) \ar[ddd]_{F(f)} \\
+        \\
+        \\
+        F(Y)
+    }
+  \]
+  \begin{itemize}
+    \item $F$は、関数を関数に移す。
+    \item この時のルールをわかっていれば、foldをすぐに書けるようになる。
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{多項式関手F(対象)}
+  \begin{eqnarray*}
+    F(X) &=& 1 + X \\
+    F(X) &=& 1 + A \times X \\
+    F(X) &=& B + A \times X \\
+    F(X) &=& 1 + X \times X \\
+    F(X) &=& A + X \times X \\
+    F(X) &=& A + A \times X \times X
+  \end{eqnarray*}
+  \begin{itemize}
+    \item $+$, $\times$は、足し算掛け算に似たようなもの
+    \item その意味で、右辺が多項式になっているもの
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{多項式関手F（射）}
+  \begin{eqnarray*}
+    F(X) &=& Id_1 + f \\
+    F(X) &=& Id_1 + Id_A \times f \\
+    F(X) &=& Id_B + Id_A \times f \\
+    F(X) &=& Id_1 + f \times f \\
+    F(X) &=& Id_A + f \times f \\
+    F(X) &=& Id_A + Id_A \times f \times f
+  \end{eqnarray*}
+  \begin{itemize}
+    \item 前ページで$X$に対応していた場所は対応する関数に変わる
+    \item ここで$+$は場合分け、$\times$は、それぞれに作用させるくらいの気持ち
+  \end{itemize}
+}
+
+
+\frame{
+  \frametitle{各射について}
+  \[
+    \xymatrix{
+        X \ar[ddd]_{f(h)} \\
+        \\
+        \\
+        Y
+    }
+  \]
+  \begin{itemize}
+    \item $f$ が、fold
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{Listの場合}
+  \[
+    \xymatrix{
+        X \ar[ddd]_{f} \ar@<-0.7ex>[rrr]_{in^{-1}} & & & 1 + A \times X \ar@<-0.7ex>[lll]_{in} \ar[ddd]^{F(f)} \\
+        & & & \\
+        & & & \\
+        Y & & & 1 + A \times Y \ar[lll]_{h}
+    }
+  \]
+}
+
+\frame{
+  \frametitle{Treeの場合}
+  \[
+    \xymatrix{
+        X \ar[ddd]_{f} \ar@<-0.7ex>[rrr]_{in^{-1}} & & & A + X \times X \ar@<-0.7ex>[lll]_{in} \ar[ddd]^{F(f)} \\
+        & & & \\
+        & & & \\
+        Y & & & A + Y \times Y \ar[lll]_{h}
+    }
+  \]
+}
+
+\frame{
+  \frametitle{Natural Numberの場合}
+  \[
+    \xymatrix{
+        X \ar[ddd]_{f} \ar@<-0.7ex>[rrr]_{in^{-1}} & & & 1 + X \ar@<-0.7ex>[lll]_{in} \ar[ddd]^{F(f)} \\
+        & & & \\
+        & & & \\
+        Y & & & 1 + Y \ar[lll]_{h}
+    }
+  \]
+}
+
+\end{document}
